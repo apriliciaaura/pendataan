@@ -15,7 +15,7 @@ class CreatePeraturan extends Migration
     {
         Schema::create('peraturan', function (Blueprint $table) {
             $table->bigIncrements('id_peraturan');
-            $table->string('isi', 255);
+            $table->text('isi');
             $table->timestamps();
         });
     }

@@ -21,9 +21,8 @@ Route::get('dashboard', function () {
 	return view('dashboard.index');
 })->name('dashboard');
 
-Route::get('/', function () {
-    return view('layouts.usermain');
-});
+Route::get('/', 'HomeController@index');
+Route::post('/', 'HomeController@store');
 
 Route::get('auth', function () {
     return view('auth.login');

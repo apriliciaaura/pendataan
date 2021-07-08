@@ -49,6 +49,8 @@ class GaleriController extends Controller
             'gambar' => $imgName,
             'keterangan' => $request->keterangan,
         ]);
+
+        return redirect()->route('galeri.index')->with('sukses', 'Data berhasil ditambah');
     }
 
     /**
@@ -115,5 +117,5 @@ class GaleriController extends Controller
         return redirect()->route('galeri.index')->with('sukses', 'Data berhasil dihapus');
     }
 
-   
+
 }

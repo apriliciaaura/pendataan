@@ -11,6 +11,10 @@ class Pengumuman extends Model
     protected $primaryKey = 'id_pengumuman';
     protected $fillable = ['tanggal', 'judul', 'isi'];
 
+    protected $casts = [
+        'tanggal' => 'date:Y-m-d',
+    ];
+
     public function pengumuman(){
     	return $this->belongsTo(Pengumuman::class);
 	}

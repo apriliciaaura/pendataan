@@ -15,7 +15,7 @@ class CreateGunung extends Migration
     {
         Schema::create('gunung', function (Blueprint $table) {
             $table->bigIncrements('id_gunung');
-            $table->string('isi', 255);
+            $table->text('isi');
             $table->timestamps();
         });
     }

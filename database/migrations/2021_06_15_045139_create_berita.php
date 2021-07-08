@@ -17,7 +17,7 @@ class CreateBerita extends Migration
             $table->bigIncrements('id_berita');
             $table->date('tanggal');
             $table->string('judul', 255);
-            $table->string('isi', 255);
+            $table->text('isi');
             $table->timestamps();
         });
     }

@@ -5,7 +5,7 @@
   <div class="section-header">
     <h1>Berita</h1>
   </div>
-  
+
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -64,18 +64,14 @@
                                 </form>
                     </div>
                 </div>
-          </div>                 
+          </div>
         </div>
         <!-- /.card -->
       </div>
     </section>
   </div>
-  @endsection
-
-@section('ckeditor')
-<script src="{{asset('assets/ckeditor/ckeditor.js')}}"></script>
-
-<script>
-    CKEDITOR.replace('ckeditor');
-</script>
+  <script src="https://cdn.ckeditor.com/4.16.1/standard/ckeditor.js"></script>
+  <script>
+  CKEDITOR.replace('isi');
+  </script>
 @endsection

@@ -11,6 +11,10 @@ class Berita extends Model
     protected $primaryKey = 'id_berita';
     protected $fillable = ['tanggal', 'judul', 'isi'];
 
+    protected $casts = [
+        'tanggal' => 'date:Y-m-d',
+    ];
+
     public function berita(){
     	return $this->belongsTo(Berita::class);
 	}

@@ -5,7 +5,7 @@
   <div class="section-header">
     <h1>Pengumuman</h1>
   </div>
-  
+
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -54,7 +54,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="">Isi :</label>
-                                        <textarea id="ckeditor" class="form-control" name="isi" rows="10" cols="50">{{$pengumuman->isi}}</textarea>
+                                        <textarea id="isi" class="form-control" name="isi" rows="10" cols="50">{{$pengumuman->isi}}</textarea>
                             </div>
                             <div class="form-group">
                                 <button type="submit" class="mt-1 btn med btn-success float-right">
@@ -65,19 +65,16 @@
                                 </form>
                     </div>
                 </div>
-          </div>                 
+          </div>
         </div>
         <!-- /.card -->
       </div>
     </section>
   </div>
-  @endsection
 
-@section('ckeditor')
-<script src="{{asset('assets/ckeditor/ckeditor.js')}}"></script>
-
+<script src="https://cdn.ckeditor.com/4.16.1/standard/ckeditor.js"></script>
 <script>
-    CKEDITOR.replace('ckeditor');
+CKEDITOR.replace('isi');
 </script>
 
 @endsection
