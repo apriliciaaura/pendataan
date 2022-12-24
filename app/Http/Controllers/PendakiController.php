@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\DB;
 use App\Models\Pendaki;
 use App\Exports\PendakiExport;
 use Maatwebsite\Excel\Facades\Excel;
+use App\Mail\KirimEmail;
+use Illuminate\Support\Facades\Mail;
 
 use Illuminate\Http\Request;
 
@@ -17,7 +19,7 @@ class PendakiController extends Controller
      */
     public function index()
     {
-        $pendaki = Pendaki::paginate(1);
+        $pendaki = DB::table('pendaki')->Paginate(5);
         return view('pendaki.index', ['pendaki' => $pendaki]);
     }
 
@@ -36,8 +38,8 @@ class PendakiController extends Controller
         $cari = $request->cari;
  
         $pendaki = DB::table('pendaki')
-        ->where('nama', 'LIKE', '%'.$cari.'%')
-        ->paginate(1);
+        ->where('nama', 'LIKE', '%'.$cari.'%')->orWhere('status', 'LIKE', '%'.$cari.'%')
+        ->paginate(5);
  
         return view('pendaki.index',['pendaki' => $pendaki]);
     }
@@ -60,27 +62,36 @@ class PendakiController extends Controller
             'jenis_kelamin' => 'required',
             'jenis_identitas' => 'required',
             'no_identitas' => 'required',
+            'foto_identitas' => 'mimes:jpeg,png,jpg,gif,svg',
             'alamat' => 'required',
             'no_hp' => 'required',
             'email' => 'required',
+            'anggota' => 'required',
             'tanggal_berangkat' => 'required',
             'tanggal_kembali' => 'required',
             'status' => 'required',
         ]);
-        $form_data = array(
+
+        $imgName = null;
+
+        $imgName = $request->foto_identitas->getClientOriginalName() . '-' . time() . '-' . $request->foto_identitas->extension();
+        $request->foto_identitas->move(public_path('image'), $imgName);
+
+        Pendaki::create([
             'nama'    =>  $request->nama,
             'jenis_kelamin'     =>  $request->jenis_kelamin,
             'jenis_identitas'    =>  $request->jenis_identitas,
             'no_identitas'    =>  $request->no_identitas,
+            'foto_identitas' => $imgName,
             'alamat'     =>  $request->alamat,
             'no_hp'    =>  $request->no_hp,
             'email'    =>  $request->email,
+            'anggota'    =>  $request->anggota,
             'tanggal_berangkat'     =>  $request->tanggal_berangkat,
             'tanggal_kembali'    =>  $request->tanggal_kembali,
             'status'    =>  $request->status,
-        );
+        ]);
 
-        Pendaki::create($form_data);
         return redirect()->route('pendaki.index')->with('success', 'Data Added Successfully.');
     }
 
@@ -121,26 +132,39 @@ class PendakiController extends Controller
             'jenis_kelamin' => 'required',
             'jenis_identitas' => 'required',
             'no_identitas' => 'required',
+            'foto_identitas' => 'required',
             'alamat' => 'required',
             'no_hp' => 'required',
             'email' => 'required',
+            'anggota' => 'required',
             'tanggal_berangkat' => 'required',
             'tanggal_kembali' => 'required',
             'status' => 'required',
         ]);
 
-        $pendaki = Pendaki::find($id_pendaki);
-        $pendaki->nama = $request->input('nama');
-        $pendaki->jenis_kelamin = $request->input('jenis_kelamin');
-        $pendaki->jenis_identitas = $request->input('jenis_identitas');
-        $pendaki->no_identitas = $request->input('no_identitas');
-        $pendaki->alamat = $request->input('alamat');
-        $pendaki->no_hp = $request->input('no_hp');
-        $pendaki->email = $request->input('email');
-        $pendaki->tanggal_berangkat = $request->input('tanggal_berangkat');
-        $pendaki->tanggal_kembali = $request->input('tanggal_kembali');
-        $pendaki->status = $request->input('status');
-        $pendaki->save();
+        $imgName = null;
+
+        if($request->foto_identitas){
+            $imgName = $request->foto_identitas->getClientOriginalName() . '-' . time() . '-' . $request->foto_identitas->extension();
+            $request->foto_identitas->move(public_path('image'), $imgName);
+        }
+
+        Pendaki::find($id_pendaki)->update([
+            'nama' => $request->nama,
+            'jenis_kelamin' => $request->jenis_kelamin,
+            'jenis_identitas' => $request->jenis_identitas,
+            'no_identitas' => $request->no_identitas,
+            'foto_identitas' => $imgName,
+            'alamat' => $request->alamat,
+            'no_hp' => $request->no_hp,
+            'email' => $request->email,
+            'anggota' => $request->anggota,
+            'tanggal_berangkat' => $request->tanggal_berangkat,
+            'tanggal_kembali' => $request->tanggal_kembali,
+            'status' => $request->status,
+            'keterangan' => $request->keterangan,
+        ]);
+
         return redirect()->route('pendaki.index');
     }
 
@@ -156,4 +180,26 @@ class PendakiController extends Controller
         $pendaki->delete();
         return redirect()->route('pendaki.index');
     }
+
+    public function proses_kirim($id_pendaki)
+    {
+        $pendaki = Pendaki::findOrFail($id_pendaki);
+        Mail::to($pendaki->email)->send(new KirimEmail());
+        return "Berhasil dikirim";
+    }
+
+    public function email($id_pendaki)
+    {
+        $pendaki = Pendaki::findOrFail($id_pendaki);
+        Mail::to($pendaki->email)->send(new KirimEmail());
+        return redirect()->route('pendaki.index')->with('status', 'Berhasil Mengirim Email');
+    }
+
+    public function sms($id_pendaki)
+    {
+        $pendaki = Pendaki::findOrFail($id_pendaki);
+        Send::to($pendaki->no_hp)->send(new KirimSMS());
+        return redirect()->route('pendaki.index')->with('status', 'Berhasil Mengirim SMS');
+    }
 }
+

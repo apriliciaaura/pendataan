@@ -45,7 +45,7 @@
                             <div class="form-group">
                                 <label>Tanggal :</label>
                                     <div class="input-group date" id="datetimepicker">
-                                        <input name="tanggal" type="date" class="form-control datetimepicker-input" value="{{ $berita->tanggal}}" />
+                                        <input name="tanggal" type="date" class="form-control datetimepicker-input" value="{{ $berita->tanggal->toDateString() }}" />
                                     </div>
                             </div>
                             <div class="form-group">

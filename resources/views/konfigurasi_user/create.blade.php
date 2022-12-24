@@ -18,7 +18,7 @@
             <ol class="breadcrumb float-sm-right">
               <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Home</a></li>
               <li class="breadcrumb-item"><a href="{{ route('konfigurasi_user.index') }}">Konfigurasi User</a></li>
-              <li class="breadcrumb-item active">Edit Galeri</li>
+              <li class="breadcrumb-item active">Edit Konfigurasi User</li>
             </ol>
           </div>
         </div>
@@ -44,7 +44,7 @@
                         {!! csrf_field() !!}
                                     <div class="form-group">
                                         <label for="">Nama :</label>
-                                        <input class="form-control" type="text" placeholder="" name="nama" id="">
+                                        <input class="form-control" type="text" placeholder="" name="name" id="">
                                     </div>
                                     <div class="form-group">
                                         <label for="">Username :</label>

@@ -86,9 +86,10 @@
 		            <div class="row d-flex justify-content-center">
 		                <div class="menu-content pb-70 col-lg-8">
 		                    <div class="title text-center">
-		                        <h1 class="mb-10">Deskripsi</h1>
-		                        {!! $gunung->isi !!}
+		                        <h1 class="mb-10">Gunung Batu Tulis</h1>
+								<br>
 		                    </div>
+							{!! $gunung->isi !!}
 		                </div>
 		            </div>
 			</section>
@@ -101,8 +102,9 @@
 		                <div class="menu-content pb-70 col-lg-8">
 		                    <div class="title text-center">
 		                        <h1 class="mb-10">Peraturan Pendakian</h1>
-                                {!! $aturan->isi !!}
+								<br>
 		                    </div>
+							{!! $aturan->isi !!}
 		                </div>
 		            </div>
 			</section>
@@ -125,7 +127,7 @@
 								<div class="thumb">
 								</div>
 								<div class="details">
-									<a href="#"><h4 class="title">{{ $p->judul }}</h4></a>
+									<h4 class="title">{{ $p->judul }}</h4>
 									{!! $p->isi !!}
 									<h6 class="date">{{ $p->tanggal->format('j F Y') }}</h6>
 								</div>
@@ -154,7 +156,7 @@
 
 								<div class="details">
 
-									<a href="#"><h4 class="title">{{ $b->judul }}</h4></a>
+									<h4 class="title">{{ $b->judul }}</h4>
 									{!! $b->isi !!}
 									<h6 class="date">{{ $b->tanggal->format('j F Y') }}</h6>
 								</div>
@@ -183,8 +185,9 @@
 								<div class="thumb">
 									<img class="img-fluid" src="/image/{{$g->gambar}}" alt="">
 								</div>
-								<a href="#">
+								<div class="title text-center">
 									<h4>{{ $g->keterangan }}</h4>
+								</div>
 								</a>
 							</div>
 						</div>
@@ -201,72 +204,37 @@
 					<div class="row">
 						<div class="col-lg-3  col-md-6 col-sm-6">
 							<div class="single-footer-widget">
-								<h6>About Agency</h6>
+								<h6>About Website</h6>
 								<p>
-									The world has become so fast paced that people don’t want to stand by reading a page of information, they would much rather look at a presentation and understand the message. It has come to a point
+									Sistem Informasi Pendataan Pendakian Gunung Batu Tulis merupakan sebuah sistem yang digunakan untuk mendaftar pendakian secara online serta mengetahui informasi mengenai pendakian.
 								</p>
 							</div>
 						</div>
 						<div class="col-lg-3 col-md-6 col-sm-6">
 							<div class="single-footer-widget">
-								<h6>Navigation Links</h6>
+								<h6>Contact Us</h6>
 								<div class="row">
 									<div class="col">
 										<ul>
-											<li><a href="#">Home</a></li>
-											<li><a href="#">Feature</a></li>
-											<li><a href="#">Services</a></li>
-											<li><a href="#">Portfolio</a></li>
-										</ul>
-									</div>
-									<div class="col">
-										<ul>
-											<li><a href="#">Team</a></li>
-											<li><a href="#">Pricing</a></li>
-											<li><a href="#">Blog</a></li>
-											<li><a href="#">Contact</a></li>
+											<p>Address : Precet, Parangargo, Doko, Malang, Jawa Timur 65158</p>
+											<p>Email : gunung.batutulis@gmail.com </p>
+											<p>Phone : 0341-456-789</p>
 										</ul>
 									</div>
 								</div>
 							</div>
 						</div>
-						<div class="col-lg-3  col-md-6 col-sm-6">
-							<div class="single-footer-widget">
-								<h6>Newsletter</h6>
-								<p>
-									For business professionals caught between high OEM price and mediocre print and graphic output.
-								</p>
-								<div id="mc_embed_signup">
-									<form target="_blank" action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01" method="get" class="subscription relative">
-										<div class="input-group d-flex flex-row">
-											<input name="EMAIL" placeholder="Email Address" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Email Address '" required="" type="email">
-											<button class="btn bb-btn"><span class="lnr lnr-location"></span></button>
-										</div>
-										<div class="mt-10 info"></div>
-									</form>
-								</div>
-							</div>
-						</div>
+						
 						<div class="col-lg-3  col-md-6 col-sm-6">
 							<div class="single-footer-widget mail-chimp">
-								<h6 class="mb-20">InstaFeed</h6>
-								<ul class="instafeed d-flex flex-wrap">
-									<li><img src="img/i1.jpg" alt=""></li>
-									<li><img src="img/i2.jpg" alt=""></li>
-									<li><img src="img/i3.jpg" alt=""></li>
-									<li><img src="img/i4.jpg" alt=""></li>
-									<li><img src="img/i5.jpg" alt=""></li>
-									<li><img src="img/i6.jpg" alt=""></li>
-									<li><img src="img/i7.jpg" alt=""></li>
-									<li><img src="img/i8.jpg" alt=""></li>
-								</ul>
+							<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d28647.05289381579!2d112.49408403920046!3d-7.966088448372808!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7883a1ffebd02d%3A0x181f7dcdc0b8ec2!2sPuncak%20Batu%20Tulis!5e1!3m2!1sid!2sid!4v1625816760865!5m2!1sid!2sid" width="550" height="200" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
 							</div>
 						</div>
 					</div>
 
 					<div class="row footer-bottom d-flex justify-content-between align-items-center">
 						<p class="col-lg-8 col-sm-12 footer-text m-0"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved </a>
 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
 						<div class="col-lg-4 col-sm-12 footer-social">
 							<a href="#"><i class="fa fa-facebook"></i></a>
@@ -284,7 +252,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 			<script src="user/js/vendor/bootstrap.min.js"></script>
 			<script src="user/https://maps.googleapis.com/maps/api/js?key=AIzaSyBhOdIF3Y9382fqJYt5I_sswSrEw5eihAA"></script>
  			<script src="user/js/jquery-ui.js"></script>
-  		<script src="user/js/easing.min.js"></script>
+  			<script src="user/js/easing.min.js"></script>
 			<script src="user/js/hoverIntent.js"></script>
 			<script src="user/js/superfish.min.js"></script>
 			<script src="user/js/jquery.ajaxchimp.min.js"></script>
@@ -293,22 +261,25 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 			<script src="user/js/owl.carousel.min.js"></script>
 			<script src="user/js/mail-script.js"></script>
 			<script src="user/js/main.js"></script>
+			
 
             <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Daftar Pendakian</h5>
+		  <h5 class="modal-title" id="exampleModalLabel">Selamat datang di Registrasi Online</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
         <div class="modal-body">
-            <form method="POST" action="">
+		Sebelum melakukan registrasi, bagi setiap individu yang ingin melakukan pendakian dipersilahkan untuk mencermati tata cara registrasi dengan seksama di halaman awal. Peraturan dan Larangan merupakan hal yang harus ditaati oleh calon pendaki.
+		<form method="POST" action="" enctype="multipart/form-data">
                 @csrf
+				<br>
                 <div class="form-group">
-                  <label for="nama">Nama Pendaki</label>
+                  <label for="nama">Nama Ketua</label>
                   <input type="text" class="form-control" id="nama"  name="nama" required>
                   {{-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> --}}
                 </div>
@@ -332,6 +303,10 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
                     <label for="no_identitas">No. Identitas</label>
                     <input type="text" class="form-control" id="no_identitas" name="no_identitas" required>
                 </div>
+				<div class="form-group">
+                    <label for="">Foto Identitas :</label>
+					<input type="file" class="form-control-file" name="foto_identitas">
+				</div>
                 <div class="form-group">
                     <label for="alamat">Alamat</label>
                     <input type="text" class="form-control" id="alamat" name="alamat" required>
@@ -343,6 +318,10 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
                 <div class="form-group">
                     <label for="email">Email</label>
                     <input type="text" class="form-control" id="email" name="email" required>
+                </div>
+				<div class="form-group">
+                  <label for="anggota">Nama Anggota (Jika tidak ada isi dengan "Tidak ada")</label>
+                  <input type="text" class="form-control" id="anggota"  name="anggota" required>
                 </div>
                 <div class="form-group">
                     <label for="tanggal_berangkat">Tanggal Berangkat</label>

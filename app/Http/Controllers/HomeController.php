@@ -32,26 +32,33 @@ class HomeController extends Controller
             'jenis_kelamin' => 'required',
             'jenis_identitas' => 'required',
             'no_identitas' => 'required',
+            'foto_identitas' => 'mimes:jpeg,png,jpg,gif,svg',
             'alamat' => 'required',
             'no_hp' => 'required',
             'email' => 'required',
+            'anggota' => 'required',
             'tanggal_berangkat' => 'required',
             'tanggal_kembali' => 'required',
         ]);
 
+        $imgName = $request->foto_identitas->getClientOriginalName() . '-' . time() . '-' . $request->foto_identitas->extension();
+        $request->foto_identitas->move(public_path('image'), $imgName);
+
         Pendaki::create([
             'nama' => $request->nama,
-            'jenis_kelamin' => $request->nama,
+            'jenis_kelamin' => $request->jenis_kelamin,
             'jenis_identitas' => $request->jenis_identitas,
             'no_identitas' => $request->no_identitas,
+            'foto_identitas' => $imgName,
             'alamat' => $request->alamat,
             'no_hp' => $request->no_hp,
             'email' => $request->email,
+            'anggota' => $request->anggota,
             'tanggal_berangkat' => $request->tanggal_berangkat,
             'tanggal_kembali' => $request->tanggal_kembali,
-            'status' => "Baru daftar",
+            'status' => "Baru Daftar",
         ]);
 
-        return redirect('/')->with('status', 'Berhasil mendaftarkan diri');
+        return redirect('/')->with('status', 'Berhasil mendaftarkan diri. Silahkan menunggu email untuk mendapatkan pemberitahuan mengenai konfirmasi pendakian. Jika dalam 3 hari belum ada konfirmasi, silahkan hubungi nomor CP (0341-456-789)');
     }
 }

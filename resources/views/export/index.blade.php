@@ -20,7 +20,7 @@
   &nbsp
     <h5>Catatan :</h5>
     <ul>
-        <li>Menu ini digunakan untuk mencetak laporan data pendaki dalam bentuk PDF</li>
+        <li>Menu ini digunakan untuk mencetak laporan data pendaki dalam bentuk Excel</li>
     </ul>
   </div>
 </section>

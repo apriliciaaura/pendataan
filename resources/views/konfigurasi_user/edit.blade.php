@@ -36,7 +36,7 @@
                 </h4>
             </div>
           <div class="card-body">
-            <form action="{{ route('konfigurasi_user.update', ['id_user' => $konfigurasi_user->id_user]) }}" method="POST" role="form" id="quickForm" enctype="multipart/form-data">
+            <form action="{{ route('konfigurasi_user.update', ['id' => $users->id]) }}" method="POST" role="form" id="quickForm" enctype="multipart/form-data">
               <input type="hidden" name="_method" value="PUT">
               @csrf
                 <div class="row">
@@ -44,15 +44,15 @@
                        <form action="" method="get">
                             <div class="form-group">
                                 <label for="">Nama :</label>
-                                <input class="form-control" type="text" placeholder="" name="nama" id="" value="{{$konfigurasi_user->nama}}">
+                                <input class="form-control" type="text" placeholder="" name="name" id="" value="{{$users->name}}">
                             </div>
                             <div class="form-group">
                                 <label for="">Username :</label>
-                                <input class="form-control" type="text" placeholder="" name="username" id="" value="{{$konfigurasi_user->username}}">
+                                <input class="form-control" type="text" placeholder="" name="username" id="" value="{{$users->username}}">
                             </div>
                             <div class="form-group">
                                 <label for="">Email :</label>
-                                <input class="form-control" type="text" placeholder="" name="email" id="" value="{{$konfigurasi_user->email}}">
+                                <input class="form-control" type="text" placeholder="" name="email" id="" value="{{$users->email}}">
                             </div>
                             <div class="form-group" style="margin-top:30px;">
                                 <button type="submit" class="btn btn-md btn-success float-right">

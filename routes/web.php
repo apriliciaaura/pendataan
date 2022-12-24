@@ -17,16 +17,27 @@ use Illuminate\Support\Facades\Route;
 	//return view('dashboard.index');
 //})->name('dashboard');
 
-Route::get('dashboard', function () {
-	return view('dashboard.index');
-})->name('dashboard');
-
 Route::get('/', 'HomeController@index');
 Route::post('/', 'HomeController@store');
+
+Route::get('/login', 'AuthController@login')->name('login');
+Route::post('/postlogin', 'AuthController@postlogin');
+Route::get('/logout', 'AuthController@logout');
 
 Route::get('auth', function () {
     return view('auth.login');
 })->name('auth');
+
+Route::get('/tesemail', 'KirimController@kirim_email');
+Route::get('/proses-kirim-email', 'PendakiController@proses_kirim');
+
+Route::get('pendaki/email/{id_pendaki}', ['as' => 'pendaki.email', 'uses' => 'PendakiController@email']);
+
+
+Route::group(['middleware' => 'auth'],function(){
+Route::get('dashboard', function () {
+	return view('dashboard.index');
+})->name('dashboard');
 
 Route::get('gunung', ['as' => 'gunung.index', 'uses' => 'GunungController@index']);
 Route::get('gunung/edit/{id_gunung}', ['as' => 'gunung.edit', 'uses' => 'GunungController@edit']);
@@ -76,6 +87,8 @@ Route::get('export', ['as' => 'export.index', 'uses' => 'ExportController@index'
 Route::get('konfigurasi_user', ['as' => 'konfigurasi_user.index', 'uses' => 'KonfigurasiUserController@index']);
 Route::get('konfigurasi_user/create', ['as' => 'konfigurasi_user.create', 'uses' => 'KonfigurasiUserController@create']);
 Route::post('konfigurasi_user', ['as' => 'konfigurasi_user.store', 'uses' => 'KonfigurasiUserController@store']);
-Route::get('konfigurasi_user/edit/{id_user}', ['as' => 'konfigurasi_user.edit', 'uses' => 'KonfigurasiUserController@edit']);
-Route::put('konfigurasi_user/edit/{id_user}', ['as' => 'konfigurasi_user.update', 'uses' => 'KonfigurasiUserController@update']);
-Route::get('konfigurasi_user/delete/{id_user}', ['as' => 'konfigurasi_user.delete', 'uses' => 'KonfigurasiUserController@delete']);
+Route::get('konfigurasi_user/edit/{id}', ['as' => 'konfigurasi_user.edit', 'uses' => 'KonfigurasiUserController@edit']);
+Route::put('konfigurasi_user/edit/{id}', ['as' => 'konfigurasi_user.update', 'uses' => 'KonfigurasiUserController@update']);
+Route::get('konfigurasi_user/delete/{id}', ['as' => 'konfigurasi_user.delete', 'uses' => 'KonfigurasiUserController@delete']);
+
+});

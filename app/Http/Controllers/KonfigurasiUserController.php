@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Models\KonfigurasiUser;
+use App\Models\User;
 
 class KonfigurasiUserController extends Controller
 {
@@ -15,8 +16,8 @@ class KonfigurasiUserController extends Controller
      */
     public function index()
     {
-        $konfigurasi_user = KonfigurasiUser::all();
-        return view('konfigurasi_user.index', ['konfigurasi_user' => $konfigurasi_user]);
+        $users = DB::table('users');
+        return view('konfigurasi_user.index', ['users' => $users]);
     }
 
     /**
@@ -38,12 +39,12 @@ class KonfigurasiUserController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nama' => 'required',
+            'name' => 'required',
             'username' => 'required',
             'email' => 'required',
         ]);
         $form_data = array(
-            'nama'    =>  $request->nama,
+            'name'    =>  $request->name,
             'username'     =>  $request->username,
             'email'    =>  $request->email,
         );
@@ -69,10 +70,10 @@ class KonfigurasiUserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id_user)
+    public function edit($id)
     {
-        $konfigurasi_user = KonfigurasiUser::find($id_user);
-        return view('konfigurasi_user.edit', compact('konfigurasi_user'));
+        $users = KonfigurasiUser::find($id);
+        return view('konfigurasi_user.edit', compact('users'));
     }
 
     /**
@@ -82,19 +83,19 @@ class KonfigurasiUserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id_user)
+    public function update(Request $request, $id)
     {
         $request->validate([
-            'nama' => 'required',
+            'name' => 'required',
             'username' => 'required',
             'email' => 'required',
         ]);
 
-        $konfigurasi_user = KonfigurasiUser::find($id_user);
-        $konfigurasi_user->nama = $request->input('nama');
-        $konfigurasi_user->username = $request->input('username');
-        $konfigurasi_user->email = $request->input('email');
-        $konfigurasi_user->save();
+        $users = KonfigurasiUser::find($id);
+        $users->name = $request->input('name');
+        $users->username = $request->input('username');
+        $users->email = $request->input('email');
+        $users->save();
         return redirect()->route('konfigurasi_user.index');
     }
 
@@ -104,10 +105,10 @@ class KonfigurasiUserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function delete($id_user)
+    public function delete($id)
     {
-        $konfigurasi_user = KonfigurasiUser::findOrFail($id_user);
-        $konfigurasi_user->delete();
+        $users = KonfigurasiUser::findOrFail($id);
+        $users->delete();
         return redirect()->route('konfigurasi_user.index');
     }
 }

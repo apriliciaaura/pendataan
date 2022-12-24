@@ -19,16 +19,16 @@
   <table class="table table-default table-bordered dataTable table-hover" role="grid" aria-describedby="example1_info">
     <thead>
         <tr>
-            <th width="5%">No.</th>
-            <th width="15%">Tanggal</th>
-            <th width="20%">Judul</th>
-            <th width="30%">Isi</th>
+            <th style="text-align: center;vertical-align: middle;" width="5%">No.</th>
+            <th style="text-align: center;vertical-align: middle;" width="15%">Tanggal</th>
+            <th style="text-align: center;vertical-align: middle;" width="20%">Judul</th>
+            <th style="text-align: center;vertical-align: middle;" width="30%">Isi</th>
             <th style="text-align: center;vertical-align: middle;">Aksi</th>
          </tr>
          @foreach($berita as $key => $b)
         <tr>
-            <td>{{$key+1}}</td>
-            <td><?=date('d F Y', strtotime($b->tanggal));?></td>
+            <td style="text-align: center;vertical-align">{{$key+1}}</td>
+            <td style="text-align: center;vertical-align"><?=date('d F Y', strtotime($b->tanggal));?></td>
             <td>{!!$b->judul!!}</td>
             <td>{!!$b->isi!!}</td>
             <td width="20%" style="text-align: center;">

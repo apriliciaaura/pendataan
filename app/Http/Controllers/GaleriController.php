@@ -86,6 +86,7 @@ class GaleriController extends Controller
     public function update(Request $request, $id_galeri)
     {
         $request->validate([
+            'gambar' => 'required',
             'keterangan' => 'required',
         ]);
 
@@ -98,7 +99,7 @@ class GaleriController extends Controller
 
         Galeri::find($id_galeri)->update([
             'gambar' => $imgName,
-            'keterangan' => $request->keterangan
+            'keterangan' => $request->keterangan,
         ]);
 
         return redirect()->route('galeri.index')->with('sukses', 'Data berhasil diupdate');

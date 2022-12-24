@@ -9,13 +9,13 @@
   <table class="table table-default table-bordered dataTable table-hover" role="grid" aria-describedby="example1_info">
     <thead>
         <tr>
-            <th width="100px">No.</th>
-            <th>Isi</th>
+            <th style="text-align: center;vertical-align: middle;" width="100px">No.</th>
+            <th style="text-align: center;vertical-align: middle;">Isi</th>
             <th style="text-align: center;vertical-align: middle;">Aksi</th>
          </tr>
          @foreach($gunung as $key => $g)
         <tr>
-            <td>{{$key+1}}</td>
+            <td  style="text-align: center;vertical-align">{{$key+1}}</td>
             <td>{!!$g->isi!!}</td>
             <td width="20%" style="text-align: center;">
             <a href="{{ route('gunung.edit', ['id_gunung' => $g->id_gunung]) }}" class="btn btn-sm btn-warning">

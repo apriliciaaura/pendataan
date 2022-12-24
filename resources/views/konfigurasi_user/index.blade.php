@@ -19,24 +19,24 @@
   <table class="table table-default table-bordered dataTable table-hover" role="grid" aria-describedby="example1_info">
     <thead>
         <tr>
-            <th width="5%">No.</th>
-            <th width="15%">Nama</th>
-            <th width="20%">Username</th>
-            <th width="30%">Email</th>
+            <th style="text-align: center;vertical-align: middle;" width="5%">No.</th>
+            <th style="text-align: center;vertical-align: middle;" width="15%">Nama</th>
+            <th style="text-align: center;vertical-align: middle;" width="20%">Username</th>
+            <th style="text-align: center;vertical-align: middle;" width="30%">Email</th>
             <th style="text-align: center;vertical-align: middle;">Aksi</th>
          </tr>
-         @foreach($konfigurasi_user as $key => $user)
+         @foreach($users->get() as $key => $user)
         <tr>
             <td>{{$key+1}}</td>
-            <td>{!!$user->nama!!}</td>
-            <td>{!!$user->username!!}</td>
-            <td>{!!$user->email!!}</td>
+            <td style="text-align: center;vertical-align: middle;">{!!$user->name!!}</td>
+            <td style="text-align: center;vertical-align: middle;">{!!$user->username!!}</td>
+            <td style="text-align: center;vertical-align: middle;">{!!$user->email!!}</td>
             <td width="20%" style="text-align: center;">
-            <a href="{{ route('konfigurasi_user.edit', ['id_user' => $user->id_user]) }}" class="btn btn-sm btn-warning">
+            <a href="{{ route('konfigurasi_user.edit', ['id' => $user->id]) }}" class="btn btn-sm btn-warning">
                 <i class="far fa-edit"></i>
                 Edit
             </a>
-            <a href="{{ route('konfigurasi_user.delete', ['id_user' => $user->id_user]) }}" class="btn btn-sm btn-danger" onclick="return confirm('Apakah Anda yakin untuk menghapus data ini?')">
+            <a href="{{ route('konfigurasi_user.delete', ['id' => $user->id]) }}" class="btn btn-sm btn-danger" onclick="return confirm('Apakah Anda yakin untuk menghapus data ini?')">
                  <i class="far fa-trash-alt"></i>
                 Hapus
             </a>

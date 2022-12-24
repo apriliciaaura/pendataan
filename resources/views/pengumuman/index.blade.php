@@ -16,20 +16,20 @@
   </div>
   <br>
 
-  <table style="text-align:center;" class="table table-default table-bordered dataTable table-hover" role="grid" aria-describedby="example1_info">
+  <table class="table table-default table-bordered dataTable table-hover" role="grid" aria-describedby="example1_info">
     <thead>
         <tr>
-            <th width="5%">No.</th>
-            <th width="15%">Tanggal</th>
-            <th width="20%">Judul</th>
-            <th width="30%">Isi</th>
+            <th style="text-align: center;vertical-align: middle;" width="5%">No.</th>
+            <th style="text-align: center;vertical-align: middle;" width="15%">Tanggal</th>
+            <th style="text-align: center;vertical-align: middle;" width="20%">Judul</th>
+            <th style="text-align: center;vertical-align: middle;" width="30%">Isi</th>
             <th style="text-align: center;vertical-align: middle;">Aksi</th>
          </tr>
          @foreach($pengumuman as $key => $p)
         <tr>
-            <td>{{$key+1}}</td>
-            <td><?=date('d F Y', strtotime($p->tanggal));?></td>
-            <td>{!!$p->judul!!}</td>
+            <td style="text-align: center;vertical-align">{{$key+1}}</td>
+            <td style="text-align: center;vertical-align"><?=date('d F Y', strtotime($p->tanggal));?></td>
+            <td >{!!$p->judul!!}</td>
             <td>{!!$p->isi!!}</td>
             <td width="20%" style="text-align: center;">
             <a href="{{ route('pengumuman.edit', ['id_pengumuman' => $p->id_pengumuman]) }}" class="btn btn-sm btn-warning">

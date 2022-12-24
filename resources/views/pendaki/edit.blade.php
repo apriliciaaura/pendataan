@@ -43,28 +43,34 @@
                     <div class="col-sm-12">
                         <form action="" method="get">
                             <div class="form-group">
-                                <label for="">Nama :</label>
+                                <label for="">Nama Ketua :</label>
                                         <input class="form-control" type="text" placeholder="" name="nama" id="" value="{{ $pendaki->nama}}">
                             </div>
                             <div class="form-group">
                                 <label for="">Jenis Kelamin :</label>
-                                <select class="form-control" name="jenis_kelamin" id="jenis_kelamin" value="{{ $pendaki->jenis_kelamin}}">
-                                    <option value="Pria">Pria</option>
-                                    <option value="Wanita">Wanita</option>
+                                <select class="form-control" name="jenis_kelamin" id="jenis_kelamin">
+                                    <option {{ $pendaki->jenis_kelamin == 'Pria' ? 'selected':'' }}>Pria</option>
+                                    <option {{ $pendaki->jenis_kelamin == 'Wanita' ? 'selected':'' }}>Wanita</option>
                                 </select>
                             </div>
                             <div class="form-group">
                                 <label for="">Jenis Identitas :</label>
-                                <select class="form-control" name="jenis_identitas" id="jenis_identitas" value="{{ $pendaki->jenis_identitas}}">
-                                    <option value="KTP">KTP</option>
-                                    <option value="SIM">SIM</option>
-                                    <option value="Kartu Pelajar">Kartu Pelajar</option>
-                                    <option value="Passport">Passport</option>
+                                <select class="form-control" name="jenis_identitas" id="jenis_identitas">
+                                    <option {{ $pendaki->jenis_identitas == 'KTP' ? 'selected':'' }}>KTP</option>
+                                    <option {{ $pendaki->jenis_identitas == 'SIM' ? 'selected':'' }}>SIM</option>
+                                    <option {{ $pendaki->jenis_identitas == 'Kartu Pelajar' ? 'selected':'' }}>Kartu Pelajar</option>
+                                    <option {{ $pendaki->jenis_identitas == 'Passport' ? 'selected':'' }}>Passport</option>
                                 </select>
                             </div>
                             <div class="form-group">
                                 <label for="">No. Identitas :</label>
                                     <input class="form-control" type="text" placeholder="" name="no_identitas" id="" value="{{ $pendaki->no_identitas}}">
+                            </div>
+                            <div class="form-group">
+                            @method('PUT')
+                                <label>Foto Identitas :</label>
+                                <input type="file" class="form-control-file" name="foto_identitas">
+                                <img src="/image/{{$pendaki->foto_identitas}}" width="250px">
                             </div>
                             <div class="form-group">
                                 <label for="">Alamat :</label>
@@ -78,6 +84,10 @@
                                 <label for="">Email :</label>
                                     <input class="form-control" type="text" placeholder="" name="email" id="" value="{{ $pendaki->email}}">
                             </div>
+                            <div class="form-group">
+                                <label for="">Nama Anggota :</label>
+                                        <input class="form-control" type="text" placeholder="" name="anggota" id="" value="{{ $pendaki->anggota}}">
+                            </div>
                             <label>Tanggal Berangkat :</label>
                                     <div class="input-group date" id="datetimepicker">
                                         <input name="tanggal_berangkat" type="date" class="form-control datetimepicker-input" value="{{ $pendaki->tanggal_berangkat}}" />
@@ -90,7 +100,13 @@
                                     <br>
                                     <div class="form-group">
                                 <label for="">Status :</label>
-                                    <input class="form-control" type="text" placeholder="" name="status" id="" value="{{ $pendaki->status}}">
+                                <select class="form-control" name="status" id="status">
+                                    <option {{ $pendaki->status == 'Baru daftar' ? 'selected':'' }}>Baru Daftar</option>
+                                    <option {{ $pendaki->status == 'Dikonfirmasi' ? 'selected':'' }}>Dikonfirmasi</option>
+                                    <option {{ $pendaki->status == 'Diizinkan' ? 'selected':'' }}>Diizinkan</option>
+                                    <option {{ $pendaki->status == 'Ditolak' ? 'selected':'' }}>Ditolak</option>
+                                    <option {{ $pendaki->status == 'Selesai' ? 'selected':'' }}>Selesai</option>
+                                </select>
                             </div>
                             <div class="form-group">
                                 <button type="submit" class="mt-1 btn med btn-success float-right">

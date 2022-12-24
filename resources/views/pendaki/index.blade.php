@@ -11,7 +11,7 @@
     <div class="col-md-12">
         <label for="">
             <form action="/pendaki/cari" method="GET">
-            <input type="text" name="cari" placeholder="Nama" class="form-control form-control-sm" id="cari">
+            <input type="text" name="cari" placeholder="Nama / Status" class="form-control form-control-sm" id="cari">
             <button style="margin:3px;" class="btn btn-sm btn-primary" type="submit">
                 <i class="fas fa-search"></i>
                     Cari
@@ -30,18 +30,20 @@
   <table style="text-align:center;" class="table table-default table-bordered dataTable table-hover" role="grid" aria-describedby="example1_info">
     <thead>
         <tr>
-            <th width="3%">No.</th>
-            <th width="10%">Nama</th>
+            <th width="2%">No.</th>
+            <th width="5%">Nama Ketua</th>
             <th width="5%">Jenis Kelamin</th>
             <th width="5%">Jenis Identitas</th>
             <th width="5%">No. Identitas</th>
-            <th width="10%">Alamat</th>
+            <th width="5%">Foto Identitas</th>
+            <th width="5%">Alamat</th>
             <th width="5%">No. HP</th>
-            <th width="10%">Email</th>
-            <th width="10%">Tanggal Berangkat</th>
-            <th width="10%">Tanggal Kembali</th>
+            <th width="5%">Email</th>
+            <th width="5%">Nama Anggota</th>
+            <th width="5%">Tanggal Berangkat</th>
+            <th width="5%">Tanggal Kembali</th>
             <th width="5%">Status</th>
-            <th width="30%" style="text-align: center;vertical-align: middle;">Aksi</th>
+            <th width="20%" style="text-align: center;vertical-align: middle;">Aksi</th>
          </tr>
          @foreach($pendaki as $key => $pen)
         <tr>
@@ -50,12 +52,37 @@
             <td>{!!$pen->jenis_kelamin!!}</td>
             <td>{!!$pen->jenis_identitas!!}</td>
             <td>{!!$pen->no_identitas!!}</td>
+            <td><img width ="100px" src="/image/{{$pen->foto_identitas}}"></td>
             <td>{!!$pen->alamat!!}</td>
             <td>{!!$pen->no_hp!!}</td>
             <td>{!!$pen->email!!}</td>
+            <td>{!!$pen->anggota!!}</td>
             <td><?=date('d F Y', strtotime($pen->tanggal_berangkat));?></td>
             <td><?=date('d F Y', strtotime($pen->tanggal_kembali));?></td>
-            <td>{!!$pen->status!!}</td>
+            <td>
+            <?php
+              if( $pen->status  == 'Baru Daftar'){ ?>
+              <span class="badge badge-primary"><?php echo $pen->status; ?></span>
+              <?php }
+
+              else if ( $pen->status == 'Dikonfirmasi'){ ?>
+                <span class="badge badge-secondary"><?php echo $pen->status; ?></span>
+                <?php }
+
+              else if ( $pen->status == 'Diizinkan'){ ?>
+              <span class="badge badge-success"><?php echo $pen->status; ?></span>
+              <?php }
+
+              else if ( $pen->status == 'Selesai'){ ?>
+                <span class="badge badge-dark"><?php echo $pen->status; ?></span>
+                <?php }
+
+              else{ ?>
+                <span class="badge badge-danger"><?php echo $pen->status; ?></span>
+                <?php }
+
+            ?>
+ </td>
             <td width="20%" style="text-align: center;">
             <a href="{{ route('pendaki.edit', ['id_pendaki' => $pen->id_pendaki]) }}" class="btn btn-sm btn-warning">
                 <i class="far fa-edit"></i>
@@ -65,11 +92,21 @@
                  <i class="far fa-trash-alt"></i>
                 Hapus
             </a>
+            <a href="{{ route('pendaki.email', ['id_pendaki' => $pen->id_pendaki]) }}" class="btn btn-sm btn-primary">
+                <i class="fas fa-paper-plane"></i>
+                Kirim SMS
+            </a>
             </td>
         </tr>
         @endforeach
     </thead>
   </table>
+  <br>
+
+Showing {{ $pendaki->currentPage() }} to {{ $pendaki->total() }} of {{ $pendaki->perPage() }} entries
+<br>
+<br>
+{{ $pendaki->links() }}
                            
   &nbsp
   <div class="card catatan bg-primary">
@@ -100,3 +137,4 @@
 </div>
 
 @endsection()
+

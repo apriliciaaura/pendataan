@@ -45,9 +45,8 @@
                             <div class="form-group">
                             @method('PUT')
                                 <label>Gambar :</label>
-                                <input type="file" class="form-control-file">
+                                <input type="file" class="form-control-file" name="gambar">
                                 <img src="/image/{{$galeri->gambar}}" width="250px">
-                                    </div>
                             </div>
                             <div class="form-group">
                                 <label for="">Keterangan :</label>

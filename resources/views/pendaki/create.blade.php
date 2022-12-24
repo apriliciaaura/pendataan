@@ -40,10 +40,11 @@
               @csrf
                 <div class="row">
                     <div class="col-sm-12">
-                        <form action="" method="get">
+                    <form action="" method="POST" enctype="multipart/form-data">
+                        {!! csrf_field() !!}
                             <div class="form-group">
                                     <div class="form-group">
-                                        <label for="">Nama :</label>
+                                        <label for="">Nama Ketua :</label>
                                         <input class="form-control" type="text" placeholder="" name="nama" id="">
                                     </div>
                                     <div class="form-group">
@@ -67,6 +68,10 @@
                                         <input class="form-control" type="text" placeholder="" name="no_identitas" id="">
                                     </div>
                                     <div class="form-group">
+                                        <label for="">Foto Identitas :</label>
+						                            <input type="file" class="form-control-file" name="foto_identitas">
+					                          </div>
+                                    <div class="form-group">
                                         <label for="">Alamat :</label>
                                         <input class="form-control" type="text" placeholder="" name="alamat" id="">
                                     </div>
@@ -77,6 +82,10 @@
                                     <div class="form-group">
                                         <label for="">Email :</label>
                                         <input class="form-control" type="text" placeholder="" name="email" id="">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="">Nama Anggota :</label>
+                                        <input class="form-control" type="text" placeholder="" name="anggota" id="">
                                     </div>
                                     <label>Tanggal Berangkat :</label>
                                         <div class="input-group date" id="datetimepicker">
@@ -89,11 +98,17 @@
                                         </div>
                                         <br>
                                     <div class="form-group">
-                                        <label for="">Status :</label>
-                                        <input class="form-control" type="text" placeholder="" name="status" id="">
+                                    <label for="">Status :</label>
+                                        <select class="form-control" name="status" id="status">
+                                            <option value="Baru daftar">Baru daftar</option>
+                                            <option value="Dikonfirmasi">Dikonfirmasi</option>
+                                            <option value="Diizinkan">Diizinkan</option>
+                                            <option value="Ditolak">Ditolak</option>
+                                            <option value="Ditolak">Selesai</option>
+                                        </select>
                                     </div>
-                            <div class="form-group">
-                                <button type="submit" class="mt-1 btn med btn-success float-right">
+                                    <div class="form-group">
+                                        <button type="submit" class="mt-1 btn med btn-success float-right">
                                         <i class="fas fa-plus"></i>
                                             Tambah
                                         </button>
