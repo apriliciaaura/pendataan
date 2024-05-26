@@ -92,10 +92,10 @@
                  <i class="far fa-trash-alt"></i>
                 Hapus
             </a>
-            <a href="{{ route('pendaki.email', ['id_pendaki' => $pen->id_pendaki]) }}" class="btn btn-sm btn-primary">
+            <!-- <a href="{{ route('pendaki.email', ['id_pendaki' => $pen->id_pendaki]) }}" class="btn btn-sm btn-primary">
                 <i class="fas fa-paper-plane"></i>
-                Kirim SMS
-            </a>
+                Kirim WA
+            </a> -->
             </td>
         </tr>
         @endforeach
